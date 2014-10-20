@@ -10,7 +10,6 @@ public class NimBattlefield{
     int pieces = startNumPieces; // the number of pieces
     int p1wins = 0; // number of times player 1 won
     int p2wins = 0; // number of times player 2 won
-    int winner = 0; // 1 for player 1 win, 2 for player 2 win
     System.out.println("How many games will you test?");
     int numGames = in.nextInt(); // number of games
     int currentNumGames = 0; // current number of games
@@ -19,38 +18,23 @@ public class NimBattlefield{
     int turn = 0; // 1 means it is player 1's turn, and 2 means it is player 2's turn;
     while (currentNumGames < numGames) {  // plays the specified number of games
       if (Math.random() < 0.5) { // 50 percent chance player 1 or player 2 goes first
-        // System.out.println("Player 1 goes first!");
         turn = 1; // player 1 goes first
       }
       else {
-        // System.out.println("Player 2 goes first!");
         turn = 2; // player 2 goes first
       }
       while (pieces > 1) { 
-        //System.out.println("There are " + pieces + " pieces");
         if (turn == 1) { // if it's player 1's turn
-          int p1takes = player1.play(pieces);
-          //System.out.println("Player 1 takes " + p1takes);
-          pieces -= p1takes; // player 1 takes pieces
+          pieces -= player1.play(pieces); // player 1 takes pieces
           turn = 2; // it is now player 2's turn
-          if (pieces == 1) {
-            p1wins++; // total number of wins is incremented by 1
-            winner = 1; // current winner is now player 1
-          }
+          if (pieces == 1) p1wins++; // if the pieces are now 1, player 1 wins
         }
         else { // if it's player 2's turn
-          int p2takes = player2.play(pieces);
-          //System.out.println("Player 2 takes " + p1takes);
-          pieces -= p2takes; // player 2 takes pieces
+          pieces -= player2.play(pieces); // player 2 takes pieces
           turn = 1; // it is now player 1's turn
-          if (pieces == 1) {
-            p2wins++; // total number of wins is incremented by 1
-            winner = 2; // current winner is now player 2
-          }
+          if (pieces == 1) p2wins++; // if the pieces are now 1, player 2 wins
         }      
       }
-      //if (winner == 1) System.out.println("Player 1 wins!!!");
-      //else System.out.println("Player 2 wins!!!");
       pieces = startNumPieces; // resets the number of pieces
       currentNumGames++; //increases the number of games completed by one
     }
