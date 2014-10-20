@@ -56,8 +56,8 @@ public class NimBattlefield{
     }
     System.out.println("Player 1 won " + p1wins + " times.");
     System.out.println("Player 2 won " + p2wins + " times.");
-    if (p1wins > p2wins) System.out.println("Player 1 is the winner!");
+    if (p1wins > p2wins) System.out.println("Player 1 is the winner by " + (p1wins - p2wins) + " games!");
     else if (p1wins == p2wins) System.out.println("It is a tie!");
-    else System.out.println("Player 2 is the winner!");
+    else System.out.println("Player 2 is the winner by " + (p2wins - p1wins) + " games!");
   }
 }
